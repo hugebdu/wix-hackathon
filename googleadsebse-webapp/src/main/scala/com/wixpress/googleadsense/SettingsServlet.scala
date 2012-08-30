@@ -3,7 +3,7 @@ package com.wixpress.googleadsense
 import domain.{WidgetId, Settings}
 import org.scalatra.ScalatraServlet
 import org.scalatra.scalate.ScalateSupport
-import com.wixpress.googleadsense.Environment._
+import com.wixpress.googleadsense.Environment.application._
 import net.liftweb.json._
 import net.liftweb.json.JsonDSL._
 import org.scalatra.liftjson.LiftJsonRequestBody

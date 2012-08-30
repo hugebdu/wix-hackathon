@@ -8,4 +8,13 @@ import service.DefaultSettingsServiceComponent
  * User: daniels
  * Date: 29/08/12
  */
-object Environment extends DefaultSettingsServiceComponent with GAESettingsDaoComponent
+object Environment {
+
+  val application =
+    if (isDev)
+      new DefaultSettingsServiceComponent with MockedSettingsDaoComponent
+    else
+      new DefaultSettingsServiceComponent with GAESettingsDaoComponent
+
+  def isDev = sys.props.get("development").isDefined
+}
