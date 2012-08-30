@@ -21,23 +21,23 @@ function SettingsCtrl($scope, $http, $resource){
             'name':'Text',
             'items':{
                 'Horizontal':[
-                    {name:'Leaderboard', width:728, height:90, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Banner', width:468, height:60, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Mobile Banner', width:320, height:50, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Half Banner', width:234, height:60, 'format':  "" + this.width + "x" + this.height + "_as"}
+                    {name:'Leaderboard', width:728, height:90},
+                    {name:'Banner', width:468, height:60},
+                    {name:'Mobile Banner', width:320, height:50},
+                    {name:'Half Banner', width:234, height:60}
                 ],
                 'Square':[
-                    {name:'Square', width:250, height:250, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Small Square', width:200, height:200, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Large Rectangle', width:336, height:280, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Medium Rectangle', width:300, height:250, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Small Rectangle', width:180, height:150, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Button', width:125, height:125, default:true, 'format':  "" + this.width + "x" + this.height + "_as"}
+                    {name:'Square', width:250, height:250},
+                    {name:'Small Square', width:200, height:200},
+                    {name:'Large Rectangle', width:336, height:280},
+                    {name:'Medium Rectangle', width:300, height:250},
+                    {name:'Small Rectangle', width:180, height:150},
+                    {name:'Button', width:125, height:125, default:true}
                 ],
                 'Vertical':[
-                    {name:'Wide Skyscraper', width:160, height:600, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Skyscraper', width:120, height:600, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Vertical Banner', width:160, height:240, 'format':  "" + this.width + "x" + this.height + "_as"}
+                    {name:'Wide Skyscraper', width:160, height:600},
+                    {name:'Skyscraper', width:120, height:600},
+                    {name:'Vertical Banner', width:160, height:240}
                 ]
             }
         },
@@ -45,14 +45,14 @@ function SettingsCtrl($scope, $http, $resource){
             'name':'Link',
             'items':{
                 'Horizontal':[
-                    {name:'Horizontal Large', width:728, height:15, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Horizontal Medium', width:468, height:15, 'format':  "" + this.width + "x" + this.height + "_as"}
+                    {name:'Horizontal Large', width:728, height:15},
+                    {name:'Horizontal Medium', width:468, height:15}
                 ],
                 'Vertical':[
-                    {name:'Vertical X-Large', width:200, height:90, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Vertical Large', width:180, height:90, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Vertical Medium', width:160, height:90, 'format':  "" + this.width + "x" + this.height + "_as"},
-                    {name:'Vertical Small', width:120, height:90, 'format':  "" + this.width + "x" + this.height + "_as"}
+                    {name:'Vertical X-Large', width:200, height:90},
+                    {name:'Vertical Large', width:180, height:90},
+                    {name:'Vertical Medium', width:160, height:90},
+                    {name:'Vertical Small', width:120, height:90}
                 ]
             }
         }
@@ -68,6 +68,10 @@ function SettingsCtrl($scope, $http, $resource){
     };
 
     $scope.adSizesFlattened = _.flatten(_.map($scope.adSizes, function(t) { return _.values(t.items) }));
+
+    _.forEach($scope.adSizesFlattened, function(item) {
+        item.format =  "" + item.width + "x" + item.height + "_as";
+    });
 
     $scope.Settings = $resource(window.contentRoot + '/settings/:instanceId/:componentId', {componentId: '@widgetId.componentId', instanceId: '@widgetId.instanceId'});
 
