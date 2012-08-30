@@ -5,6 +5,7 @@
     <title>Google adSense Settings</title>
     <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.css" media="all">
     <link rel="stylesheet" type="text/css" href="static/css/settings.css" media="all">
+    <link rel="stylesheet" type="text/css" href="static/farbtastic/farbtastic.css" media="all">
     <script type="text/javascript" src="static/js/prefixfree.js"></script>
 </head>
 <body>
@@ -56,7 +57,7 @@
                                 Link Unit
                             </label>
                         </div>
-                        <div class="settings-ad-size">
+                        <div class="settings-ad-size form-divider">
 
                             <div class="ad-type-text-sizes">
                                 <div class="ad-size-group ad-size-horizontal">
@@ -107,21 +108,36 @@
                 </a>
 
                 <a class="btn btn-link" data-toggle="collapse" href="#design" data-parent="#accordion">
-                    Design
+                    Style
                 </a>
 
                 <div id="design" class="collapse">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon
-                    officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                    Brunch 3
-                    wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch
-                    et.
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad
-                    vegan
-                    excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                    nesciunt
-                    you probably haven't heard of them accusamus labore sustainable VHS.
+                    <form id="form-design">
+                        <div class="form-devider">
+                            <strong>Colors</strong>
+                            <ul class="unstyled">
+                                <li class="ad-color">
+                                    <input type="color" id="colorBorder"/>
+                                </li>
+                                <li class="ad-color">
+                                    <input type="color" id="colorBg"/>
+                                </li>
+                                <li class="ad-color">
+                                    <input type="color" id="colorLink"/>
+                                </li>
+                                <li class="ad-color">
+                                    <input type="color" id="colorText"/>
+                                </li>
+                                <li class="ad-color">
+                                    <input type="color" id="colorUrl"/>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="colorpicker"></div>
+                        <div class="form-devider">
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -133,6 +149,9 @@
 <script type="text/javascript" src="static/js/angular-1.0.1.js"></script>
 <script type="text/javascript" src="static/js/angular-resource-1.0.1.js"></script>
 <script type="text/javascript" src="static/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="static/farbtastic/farbtastic.js">
+
+</script>
 <script type="text/javascript" src="static/js/settings.js"></script>
 </body>
 </html>
