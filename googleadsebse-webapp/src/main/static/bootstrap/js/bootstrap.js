@@ -474,7 +474,8 @@
 
       dimension = this.dimension()
       scroll = $.camelCase(['scroll', dimension].join('-'))
-      actives = this.$parent && this.$parent.find('> .accordion-group > .in')
+      //Bootstrap 2.0.3 broke accordion behavior, changing this line
+      actives = this.$parent && this.$parent.find('.accordion-group .in')
 
       if (actives && actives.length) {
         hasData = actives.data('collapse')
