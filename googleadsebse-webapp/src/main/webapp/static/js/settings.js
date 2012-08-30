@@ -6,7 +6,7 @@
 
 angular.module('settings', ['ngResource']);
 
-function SettingsCtrl($scope, $http, $resource) {
+function SettingsCtrl($scope, $http, $resource){
 
     $scope.availableTypes = window.availableTypes;
 
@@ -14,8 +14,24 @@ function SettingsCtrl($scope, $http, $resource) {
 
     $scope.settings = $scope.Settings.get({ 'instanceId': window.widgetId.instanceId, 'componentId': window.widgetId.componentId});
 
-    $scope.save = function() {
+    $scope.save = function(){
         $scope.settings.$save();
         Wix.closeSettings();
     }
 }
+
+/* Settings UI scripts */
+
+$("#ad-type-text").attr('checked', 'checked');
+$("[name=ad-type]").change(function(){
+    if ($('#ad-type-text').attr('checked') == 'checked'){
+        $('#ad-type-list').removeAttr('disabled');
+    }else{
+        $('#ad-type-list').attr('disabled', 'disabled');
+    }
+});
+
+
+$('.settings-ad-size').tooltip({
+    selector: "a[rel=tooltip]"
+});
