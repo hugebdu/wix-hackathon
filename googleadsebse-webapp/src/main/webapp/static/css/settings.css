@@ -1,30 +1,39 @@
+/*General*/
 .container{width: 618px; height: 580px; background: #f6f6f6; padding: 15px 19px; position: relative; box-sizing: border-box;}
 .row-fluid{border: 1px solid #e6e6e6; background: #fff; padding: 15px; margin-top: 17px; border-radius: 7px; box-sizing: border-box;}
 
+/*Welcome row*/
 .row-welcome .form-inline{margin-bottom: 0;}
 .logo{border-right: 1px solid #333;}
 .logo img{ height: 100px; width:100px;}
 
+/*Form General*/
 .form-inline input[type="text"]{margin-left: .5em;font-size:.916em; height:18px; line-height:18px; padding: 2px 6px;}
 .form-inline select{margin-left: 1em; font-size:.916em; height:24px; line-height:24px; padding: 2px 6px;}
-.settings-ad-type-text{padding-bottom: 7px;}
 .form-divider{border-top: 1px solid #ddd;padding:15px 0 5px;margin-top:10px;}
+.settings-content{overflow:hidden;}
+/*Form Settings*/
+.settings-ad-type-text{padding-bottom: 7px;}
 
-.ad-size-group {display: inline-block; margin: 10px; vertical-align:top;}
+.ad-size-group {display: inline-block; width:33%; vertical-align:top;}
+.ad-type-link-sizes .ad-size-group{width:50%;}
 
-.ad-size{width:30px; height:30px; background: #aaa; border-radius:5px; margin:0 1px 1px 1px; display: inline-block; box-sizing:border-box}
-.ad-size-horizontal .ad-size,
-.ad-size-vertical .ad-size{display: block; margin-bottom: 6px;}
+.ad-size-vertical{text-align:right;}
 
-.ad-size:hover{border:2px solid #08C}
-.selected {border:2px solid #08C}
+.ad-size{background: #fff; border-radius:5px; border:3px solid #019aff; margin:0 3px 1px 3px; display: inline-block; box-sizing:border-box}
+.ad-size-horizontal .ad-size{display: block; margin:0 0 12px;}
+.ad-type-text-sizes .ad-size-vertical .ad-size{margin:0 8px;}
+.ad-size:hover{box-shadow:0 0 5px 0 #019aff; }
 
+.selected {background: #019aff;}
+
+/*Form Style*/
 .ad-color-settings strong{display:block; padding-bottom:5px; }
 .ad-color{display:inline-block; position:relative; width:30%; margin:3px 15px 3px 0; box-sizing:border-box}
 .ad-color label{width:60%}
 .color{width:40px; height:20px; border:none; padding:0;margin:0;position:absolute; top:1px; right:17px;}
 .ad-color label:after{z-index:1;content:' '; position:absolute; top:1px; right:15px; width:45px; height:21px; background: url(../img/button_colorpicker.png) no-repeat 0 0;}
-.ad-color label:hover:after{box-shadow: 0 0 4px 0 #08c}
+.ad-color label:hover:after{box-shadow: 0 0 4px 0 #019aff}
 
 #form-design{margin-bottom:0;}
 .ad-radius-settings strong{position:absolute;}

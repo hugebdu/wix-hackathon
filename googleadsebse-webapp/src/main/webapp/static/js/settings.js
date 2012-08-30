@@ -19,6 +19,7 @@ function SettingsCtrl($scope, $http, $resource){
     $scope.adSizes = [
         {
             'name':'Text',
+            'meta': {'divisor':{width:5, height:5}},
             'items':{
                 'Horizontal':[
                     {name:'Leaderboard', width:728, height:90},
@@ -27,11 +28,11 @@ function SettingsCtrl($scope, $http, $resource){
                     {name:'Half Banner', width:234, height:60}
                 ],
                 'Square':[
-                    {name:'Square', width:250, height:250},
-                    {name:'Small Square', width:200, height:200},
                     {name:'Large Rectangle', width:336, height:280},
-                    {name:'Medium Rectangle', width:300, height:250},
+                    {name:'Square', width:250, height:250},
                     {name:'Small Rectangle', width:180, height:150},
+                    {name:'Medium Rectangle', width:300, height:250},
+                    {name:'Small Square', width:200, height:200},
                     {name:'Button', width:125, height:125, default:true}
                 ],
                 'Vertical':[
@@ -43,6 +44,7 @@ function SettingsCtrl($scope, $http, $resource){
         },
         {
             'name':'Link',
+            'meta': {'divisor':{width:3, height:2}},
             'items':{
                 'Horizontal':[
                     {name:'Horizontal Large', width:728, height:15},
@@ -110,8 +112,6 @@ function handleRadiusButtons(){
 }
 
 function handleTypeChange(){
-
-
     $("[name=ad-type]").change(function(){
         var prevValue = $('#ad-type-text').attr('prevValue');
         if ($('#ad-type-text').attr('checked') == 'checked'){
@@ -129,6 +129,17 @@ function handleTypeChange(){
 
     $("#ad-type-text").attr('checked', 'checked');
     $(".ad-type-link-sizes").hide();
+}
+
+function handleAccordionMinSize(){
+    $('.collapse').on('shown', function(event){
+        $(event.target).css('minHeight', '240px');
+    });
+
+    $('.collapse').on('hide', function(event){
+        $(event.target).css('minHeight', '0');
+    });
+    $('.collapse.in').css('minHeight', '240px');
 }
 
 function initColorButtons(){
@@ -149,4 +160,5 @@ $(document).ready(function() {
     initColorButtons();
     handleTypeChange();
     handleRadiusButtons();
+    handleAccordionMinSize();
 });

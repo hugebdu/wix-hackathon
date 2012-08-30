@@ -38,7 +38,7 @@
          -->
         <div class="span9 welcome-text">
             <p>
-                <span>You need to connect your <a href="">Google adSense</a> account.</span>
+                <span>You NEEED to connect your <a href="">Google adSense</a> account.</span>
                 <br/>
                 <small>Don't have a Google adSense account? <a href="">Create one</a></small>
             </p>
@@ -61,7 +61,7 @@
                     Settings
                 </a>
 
-                <div id="settings" class="collapse in">
+                <div id="settings" class="settings-content collapse in">
                     <form id="form-settings">
                         <div class="settings-ad-type form-divider">
                             <div class="form-inline settings-ad-type-text">
@@ -83,7 +83,7 @@
                             <!-- TODO -->
                             <div ng-repeat="type in adSizes" class="ad-type-{{type.name.toLowerCase()}}-sizes">
                                 <div ng-repeat="(subType, items) in type.items" class="ad-size-group ad-size-{{subType.toLowerCase()}}">
-                                    <a rel="tooltip" class="ad-size" ng-class="getCssClass(item.format)" ng-repeat="item in items" title="{{item.width}}X{{item.height}}" style="width: {{item.width / 5}}px; height: {{item.height / 5}}px" ng-click="picked(item.name)"></a>
+                                    <a rel="tooltip" class="ad-size" ng-class="getCssClass(item.format)" ng-repeat="item in items" title="{{item.width}}X{{item.height}}" style="width: {{item.width / type.meta.divisor.width}}px; height: {{item.height / type.meta.divisor.height}}px" ng-click="picked(item.name)"></a>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                     Style
                 </a>
 
-                <div id="design" class="collapse">
+                <div id="design" class="settings-content collapse">
                     <form id="form-design">
                         <div class="form-divider ad-color-settings">
                             <strong>Colors</strong>
