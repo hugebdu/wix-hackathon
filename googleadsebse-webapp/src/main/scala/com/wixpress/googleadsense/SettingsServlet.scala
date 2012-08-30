@@ -3,7 +3,7 @@ package com.wixpress.googleadsense
 import domain.{WidgetId, Settings}
 import org.scalatra.ScalatraServlet
 import org.scalatra.scalate.ScalateSupport
-import com.wixpress.googleadsense.Environment._
+import com.wixpress.googleadsense.Environment.application._
 import net.liftweb.json._
 import net.liftweb.json.JsonDSL._
 import org.scalatra.liftjson.LiftJsonRequestBody
@@ -14,6 +14,7 @@ import org.scalatra.liftjson.LiftJsonRequestBody
  * Date: 29/08/12
  */
 class SettingsServlet extends ScalatraServlet with ScalateSupport with LiftJsonRequestBody {
+
 
   get("/:instanceId/:componentId") {
     contentType = "application/json; charset=utf-8"
@@ -34,11 +35,15 @@ class SettingsServlet extends ScalatraServlet with ScalateSupport with LiftJsonR
   get("/") {
     contentType = "text/html"
 
-    ssp("/WEB-INF/views/settings.ssp",
+    ssp("settings.ssp",
       "contextRoot" -> request.getContextPath,
       "availableTypes" -> pretty(render(settingsService.availableTypes)),
       "widgetId" -> WidgetId(params("instance"), params("origCompId")).toJson)
   }
+
+  override protected def isScalateErrorPageEnabled = false
+
+
 }
 
 

@@ -1,3 +1,4 @@
+<% attributes("layout") = "" %>
 <%@ val contextRoot: String %>
 <%@ val widgetId: String %>
 <%@ val availableTypes: String %>
