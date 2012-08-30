@@ -1,0 +1,30 @@
+<%@ val contextRoot: String %>
+<%@ val widgetId: String %>
+<%@ val availableTypes: String %>
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="settings">
+<head>
+    <script type="text/javascript">
+        var widgetId = ${unescape(widgetId)};
+        var availableTypes = ${unescape(availableTypes)};
+        var contentRoot = "${contextRoot}";
+    </script>
+    <script type="text/javascript" src="${contextRoot}/static/js/angular-1.0.1.js"></script>
+    <script type="text/javascript" src="${contextRoot}/static/js/angular-resource-1.0.1.js"></script>
+    <script type="text/javascript" src="${contextRoot}/static/js/settings.js"></script>
+    <link type="text/css" rel="stylesheet" href="${contextRoot}/static/bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <form class="well" ng-controller="SettingsCtrl">
+        <legend>AdSense Unit Settings</legend>
+        <label>Account ID</label>
+        <input type="text" ng-model="settings.accountId">
+        <label>Type:</label>
+        <select ng-model="settings.widgetType" ng-options="o for o in availableTypes">
+        </select>
+        <div class="control-group">
+            <button class="btn btn-primary" ng-click="save()">OK</button>
+        </div>
+    </form>
+</body>
+</html>

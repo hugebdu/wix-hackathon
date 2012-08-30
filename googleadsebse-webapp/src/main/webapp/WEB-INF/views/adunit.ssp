@@ -1,0 +1,4 @@
+<%@ val contextRoot: String %>
+<div>
+    <img src="${contextRoot}/img/banner.gif">
+</div>
