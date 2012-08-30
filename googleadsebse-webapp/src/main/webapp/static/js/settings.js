@@ -109,18 +109,11 @@ function handleRadiusButtons(){
     });
 }
 
-function initColorButtons(){
-    var colors = $('.color');
-    colors.each(function(){
-        $(this).css({'background-color': '#'+ $(this).val()});
-    })
-}
+function handleTypeChange(){
 
-$(document).ready(function() {
-
-    var prevValue = undefined;
 
     $("[name=ad-type]").change(function(){
+        var prevValue = $('#ad-type-text').attr('prevValue');
         if ($('#ad-type-text').attr('checked') == 'checked'){
             $('#ad-type-list').removeAttr('disabled');
             $(".ad-type-link-sizes").hide();
@@ -130,18 +123,30 @@ $(document).ready(function() {
             $('#ad-type-list').attr('disabled', 'disabled');
             $(".ad-type-link-sizes").show();
             $(".ad-type-text-sizes").hide();
-            prevValue = window.adTypeAngularJsHandler("link_unit");
+            $('#ad-type-text').attr('prevValue', window.adTypeAngularJsHandler("link_unit"));
         }
     });
 
     $("#ad-type-text").attr('checked', 'checked');
     $(".ad-type-link-sizes").hide();
+}
 
+function initColorButtons(){
+    var colors = $('.color');
+    colors.each(function(){
+        $(this).css({'background-color': '#'+ $(this).val()});
+    })
+}
+
+function initTooltips(){
     $('.settings-ad-size').tooltip({
         selector: "a[rel=tooltip]"
     });
+}
 
-    handleRadiusButtons();
+$(document).ready(function() {
+    initTooltips();
     initColorButtons();
-
+    handleTypeChange();
+    handleRadiusButtons();
 });
