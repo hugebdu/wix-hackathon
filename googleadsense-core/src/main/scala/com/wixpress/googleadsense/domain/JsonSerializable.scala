@@ -13,5 +13,5 @@ trait JsonSerializable {
 
   @transient implicit val formats = DefaultFormats
 
-  def toJson = writePretty(this)
+  def toJson = write(this)
 }
