@@ -3,6 +3,8 @@ package com.wixpress.googleadsense.dao
 import com.google.appengine.api.datastore._
 import com.wixpress.googleadsense.domain.WidgetId
 import com.wixpress.googleadsense.domain.Settings
+import net.liftweb.json.{DefaultFormats, Formats, JsonParser}
+import net.liftweb.json.JsonAST.JObject
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,10 +13,12 @@ import com.wixpress.googleadsense.domain.Settings
  */
 trait GAESettingsDaoComponent extends SettingsDaoComponent {
 
-
   override val settingsDao = new GAESettingsDao
 
   class GAESettingsDao extends SettingsDao {
+
+    protected implicit def jsonFormats: Formats = DefaultFormats
+
     val ds = DatastoreServiceFactory.getDatastoreService
 
     def store(settings: Settings) {
@@ -33,10 +37,7 @@ trait GAESettingsDaoComponent extends SettingsDaoComponent {
 
     implicit def settingsToEntity(settings: Settings): Entity = {
       val e = new Entity(settings.widgetId)
-      e.setProperty("accountId", settings.accountId)
-      e.setProperty("widgetType", settings.widgetType)
-      e.setProperty("instanceId", settings.widgetId.instanceId)
-      e.setProperty("componentId", settings.widgetId.componentId)
+      e.setProperty("json", settings.toJson)
       e
     }
 
@@ -45,8 +46,7 @@ trait GAESettingsDaoComponent extends SettingsDaoComponent {
     }
 
     implicit def entityToSettings(e: Entity): Settings = {
-      Settings(WidgetId(e("instanceId"), e("componentId")), e("accountId"), e("widgetType"))
-
+      (JsonParser.parse(e("json")).asInstanceOf[JObject]).extract[Settings]
     }
   }
 }

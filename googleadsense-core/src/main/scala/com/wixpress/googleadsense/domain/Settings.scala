@@ -7,6 +7,15 @@ package com.wixpress.googleadsense.domain
  */
 
 sealed case class Settings(widgetId: WidgetId,
-                    accountId: String,
-                    widgetType: String = "120x120") extends JsonSerializable
+                           clientId: String,
+                           channel: String,
+                           width: Int = 234,
+                           height: Int = 50,
+                           format: String = "234x60_as",
+                           adType: String = "text",
+                           colorBorder: String = "FFFFFF",
+                           colorBg: String = "FFFFFF",
+                           colorLink: String = "FFFFFF",
+                           colorText: String = "FFFFFF",
+                           colorUrl: String = "FFFFFF") extends JsonSerializable
 

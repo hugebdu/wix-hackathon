@@ -27,6 +27,7 @@ trait DefaultSettingsServiceComponent extends SettingsServiceComponent {
       settingsDao.store(settings)
     }
 
-    def defaultSettings(widgetId: WidgetId) = Settings(widgetId, "newAccount%s".format(widgetId.componentId))
+    def defaultSettings(widgetId: WidgetId) = Settings(widgetId,
+      "your-client-id%s".format(widgetId.componentId), "your-channel%s".format(widgetId.componentId))
   }
 }
