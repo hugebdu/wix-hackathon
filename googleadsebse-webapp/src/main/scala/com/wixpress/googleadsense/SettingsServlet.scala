@@ -37,7 +37,7 @@ class SettingsServlet extends ScalatraServlet with ScalateSupport with LiftJsonR
     ssp("/WEB-INF/views/settings.ssp",
       "contextRoot" -> request.getContextPath,
       "availableTypes" -> pretty(render(settingsService.availableTypes)),
-      "widgetId" -> WidgetId(params("instanceId"), params("componentId")).toJson)
+      "widgetId" -> WidgetId(params("instance"), params("origCompId")).toJson)
   }
 }
 

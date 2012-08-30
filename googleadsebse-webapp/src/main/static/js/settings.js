@@ -16,5 +16,6 @@ function SettingsCtrl($scope, $http, $resource) {
 
     $scope.save = function() {
         $scope.settings.$save();
+        Wix.closeSettings();
     }
 }

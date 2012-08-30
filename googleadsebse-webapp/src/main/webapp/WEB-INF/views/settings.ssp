@@ -9,6 +9,7 @@
         var availableTypes = ${unescape(availableTypes)};
         var contentRoot = "${contextRoot}";
     </script>
+    <script type="text/javascript" src="//sslstatic.wix.com/services/js-sdk/1.8.0/js/Wix.js"></script>
     <script type="text/javascript" src="${contextRoot}/static/js/angular-1.0.1.js"></script>
     <script type="text/javascript" src="${contextRoot}/static/js/angular-resource-1.0.1.js"></script>
     <script type="text/javascript" src="${contextRoot}/static/js/settings.js"></script>

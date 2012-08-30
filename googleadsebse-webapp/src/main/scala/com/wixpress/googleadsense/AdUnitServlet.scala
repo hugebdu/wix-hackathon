@@ -17,9 +17,6 @@ class AdUnitServlet extends ScalatraServlet with ScalateSupport {
   }
 
   get("/") {
-
-    val settings = settingsService.getSettings(WidgetId(params("instanceId"), params("componentId")))
-
     ssp("/WEB-INF/views/adunit.ssp",
       "contextRoot" -> request.getContextPath)
 

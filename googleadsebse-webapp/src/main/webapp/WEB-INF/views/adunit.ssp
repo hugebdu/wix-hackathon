@@ -1,4 +1,9 @@
 <%@ val contextRoot: String %>
+<head>
+    <script type="text/javascript" src="//sslstatic.wix.com/services/js-sdk/1.8.0/js/Wix.js"></script>
+</head>
+<body>
 <div>
-    <img src="${contextRoot}/img/banner.gif">
+    <img src="${contextRoot}/static/img/banner.gif">
 </div>
+</body>
