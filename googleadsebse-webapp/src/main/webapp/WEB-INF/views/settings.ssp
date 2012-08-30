@@ -80,7 +80,7 @@
                             <!-- TODO -->
                             <div ng-repeat="type in adSizes" class="ad-type-{{type.name.toLowerCase()}}-sizes">
                                 <div ng-repeat="(subType, items) in type.items" class="ad-size-group ad-size-{{subType.toLowerCase()}}">
-                                    <a rel="tooltip" ng-class="{true: 'ad-size selected', false: 'ad-size'}[$rootScope.settings.format == item.format]" ng-repeat="item in items" title="{{item.width}}X{{item.height}}" style="width: {{item.width / 5}}px; height: {{item.height / 5}}px" ng-click="picked(item.name)"></a>
+                                    <a rel="tooltip" class="ad-size" ng-class="getCssClass(item.format)" ng-repeat="item in items" title="{{item.width}}X{{item.height}}" style="width: {{item.width / 5}}px; height: {{item.height / 5}}px" ng-click="picked(item.name)"></a>
                                 </div>
                             </div>
                         </div>

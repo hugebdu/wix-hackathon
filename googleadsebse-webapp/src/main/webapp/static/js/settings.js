@@ -67,6 +67,10 @@ function SettingsCtrl($scope, $http, $resource){
         return prevValue;
     };
 
+    $scope.getCssClass = function(fmt) {
+        return $scope.settings.format == fmt ? 'selected' : '';
+    };
+
     $scope.adSizesFlattened = _.flatten(_.map($scope.adSizes, function(t) { return _.values(t.items) }));
 
     _.forEach($scope.adSizesFlattened, function(item) {
