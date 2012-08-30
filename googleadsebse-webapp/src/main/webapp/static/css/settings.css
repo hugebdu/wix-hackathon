@@ -17,4 +17,5 @@
 .ad-size-vertical .ad-size{display: block; margin-bottom: 6px;}
 
 .ad-size:hover{border:2px solid #08C}
+.selected {border:2px solid #08C}
 
