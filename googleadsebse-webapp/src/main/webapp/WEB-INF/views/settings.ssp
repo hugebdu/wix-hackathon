@@ -24,15 +24,18 @@
     <script type="text/javascript" src="${contextRoot}/static/js/angular-1.0.1.js"></script>
     <script type="text/javascript" src="${contextRoot}/static/js/angular-resource-1.0.1.js"></script>
     <script type="text/javascript" src="${contextRoot}/static/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="${contextRoot}/static/jscolor/jscolor.js"></script>
     <script type="text/javascript" src="${contextRoot}/static/js/settings.js"></script>
 </head>
 <body>
 <div class="container" ng-controller="SettingsCtrl">
     <div class="row-fluid row-welcome">
         <div class="span3 logo"><img src="" alt="Logo"/></div>
+        <!--
         <div class="control-group">
             <button class="btn btn-primary" ng-click="save()">OK</button>
         </div>
+         -->
         <div class="span9 welcome-text">
             <p>
                 <span>You need to connect your <a href="">Google adSense</a> account.</span>
@@ -84,47 +87,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!--
-                        <div class="settings-ad-size" style="background-color: #ffff00;">
-
-                            <div class="ad-type-text-sizes">
-                                <div class="ad-size-group ad-size-horizontal">
-                                    <a rel="tooltip" class="ad-size" title="728X90"></a>
-                                    <a rel="tooltip" class="ad-size" title="468X60"></a>
-                                    <a rel="tooltip" class="ad-size" title="320X50"></a>
-                                    <a rel="tooltip" class="ad-size" title="234X60"></a>
-                                </div>
-                                <div class="ad-size-group ad-size-square">
-                                    <a rel="tooltip" class="ad-size" title="336X280"></a>
-                                    <a rel="tooltip" class="ad-size" title="300X250"></a>
-                                    <a rel="tooltip" class="ad-size" title="250X250"></a>
-                                    <br/>
-                                    <a rel="tooltip" class="ad-size" title="200X200"></a>
-                                    <a rel="tooltip" class="ad-size" title="180X150"></a>
-                                    <a rel="tooltip" class="ad-size" title="125X125"></a>
-                                </div>
-                                <div class="ad-size-group ad-size-vertical">
-                                    <a rel="tooltip" class="ad-size" title="160X600"></a>
-                                    <a rel="tooltip" class="ad-size" title="120X600"></a>
-                                    <a rel="tooltip" class="ad-size" title="160X240"></a>
-                                </div>
-                            </div>
-
-                            <div class="ad-type-link-sizes hidden">
-                                <div class="ad-size-group ad-size-horizontal">
-                                    <a rel="tooltip" class="ad-size" title="728X15"></a>
-                                    <a rel="tooltip" class="ad-size" title="468X15"></a>
-                                </div>
-                                <div class="ad-size-group ad-size-vertical">
-                                    <a rel="tooltip" class="ad-size" title="200X90"></a>
-                                    <a rel="tooltip" class="ad-size" title="180X90"></a>
-                                    <a rel="tooltip" class="ad-size" title="160X90"></a>
-                                    <a rel="tooltip" class="ad-size" title="120X90"></a>
-                                </div>
-                            </div>
-                        </div>
-                         -->
                     </form>
                 </div>
             </div>
@@ -137,21 +99,64 @@
                 </a>
 
                 <a class="btn btn-link" data-toggle="collapse" href="#design" data-parent="#accordion">
-                    Design
+                    Style
                 </a>
 
                 <div id="design" class="collapse">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon
-                    officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                    Brunch 3
-                    wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch
-                    et.
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad
-                    vegan
-                    excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                    nesciunt
-                    you probably haven't heard of them accusamus labore sustainable VHS.
+                    <form id="form-design">
+                        <div class="form-divider ad-color-settings">
+                            <strong>Colors</strong>
+                            <ul class="unstyled">
+                                <li class="ad-color form-inline">
+                                    <label for="colorBorder">Border </label>
+                                    <input class="color {required:false}" id="colorBorder" value="ff0000">
+                                </li>
+                                <li class="ad-color form-inline">
+                                    <label for="colorBg">Background </label>
+                                    <input class="color {required:false}" id="colorBg" value="ffff00">
+                                </li>
+                                <li class="ad-color form-inline">
+                                    <label for="colorLink">Link </label>
+                                    <input class="color {required:false}" id="colorLink" value="00ff00">
+                                </li>
+                                <li class="ad-color form-inline">
+                                    <label for="colorText">Text </label>
+                                    <input class="color {required:false}" id="colorText" value="00ffff">
+                                </li>
+                                <li class="ad-color form-inline">
+                                    <label for="colorUrl">URL </label>
+                                    <input class="color {required:false}" id="colorUrl" value="ff00ff">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="form-divider ad-radius-settings">
+                            <strong>Corner Style</strong>
+                            <ul class="unstyled ad-radius-list">
+                                <li class="ad-radius">
+
+                                    <input type="radio" name="corner_style" id="corner-no" value="0"/>
+                                    <a href="#" class="btn btn-primary corner-no" rel="corner-no"></a>
+                                    <label for="corner-no">
+                                        <small>Square</small>
+                                    </label>
+                                </li>
+                                <li class="ad-radius">
+                                    <input type="radio" name="corner_style" id="corner-small" value="6"/>
+                                    <a href="#" class="btn btn-primary corner-small" rel="corner-small"></a>
+                                    <label for="corner-small">
+                                        <small>Slightly Rounded</small>
+                                    </label>
+                                </li>
+                                <li class="ad-radius">
+                                    <input type="radio" name="corner_style" id="corner-large" value="10"/>
+                                    <a href="#" class="btn btn-primary corner-large" rel="corner-large"></a>
+                                    <label for="corner-large">
+                                        <small>Very Rounded</small>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -162,18 +167,5 @@
          -->
     </div>
 </div>
-    <!--
-    <form class="well" ng-controller="SettingsCtrl">
-        <legend>AdSense Unit Settings</legend>
-        <label>Client ID</label>
-        <input type="text" ng-model="settings.clientId">
-        <label>Format:</label>
-        <select ng-model="settings.format" ng-options="o for o in availableTypes">
-        </select>
-        <div class="control-group">
-            <button class="btn btn-primary" ng-click="save()">OK</button>
-        </div>
-    </form>
-     -->
 </body>
 </html>
