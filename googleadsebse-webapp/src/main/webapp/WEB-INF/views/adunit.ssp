@@ -1,3 +1,4 @@
+<% attributes("layout") = "" %>
 <%@ val contextRoot: String %>
 <head>
     <script type="text/javascript" src="//sslstatic.wix.com/services/js-sdk/1.8.0/js/Wix.js"></script>

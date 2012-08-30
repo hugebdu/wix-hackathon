@@ -15,6 +15,7 @@ import org.scalatra.liftjson.LiftJsonRequestBody
  */
 class SettingsServlet extends ScalatraServlet with ScalateSupport with LiftJsonRequestBody {
 
+
   get("/:instanceId/:componentId") {
     contentType = "application/json; charset=utf-8"
     val settings = settingsService.getSettings(WidgetId(params("instanceId"), params("componentId")))
@@ -34,11 +35,15 @@ class SettingsServlet extends ScalatraServlet with ScalateSupport with LiftJsonR
   get("/") {
     contentType = "text/html"
 
-    ssp("/WEB-INF/views/settings.ssp",
+    ssp("settings.ssp",
       "contextRoot" -> request.getContextPath,
       "availableTypes" -> pretty(render(settingsService.availableTypes)),
       "widgetId" -> WidgetId(params("instance"), params("origCompId")).toJson)
   }
+
+  override protected def isScalateErrorPageEnabled = false
+
+
 }
 
 

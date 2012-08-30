@@ -5,21 +5,41 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wixpress</groupId>
-    <artifactId>googleadsebse-webapp</artifactId>
+    <artifactId>googleadsense-webapp</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
 
-    <parent>
-        <groupId>com.wixpress.common</groupId>
-        <artifactId>wix-war-parent</artifactId>
-        <version>100.0.0-SNAPSHOT</version>
-    </parent>
 
     <properties>
         <scala.version>2.9.2</scala.version>
+        <gae.home>C:\dev\appengine-java-sdk-1.7.1</gae.home>
+        <gaeApplicationName>wixtpagas</gaeApplicationName>
+        <gaePluginVersion>0.9.4</gaePluginVersion>
+        <gae.version>1.7.0</gae.version>
+        <!-- Upload to http://test.latest.<applicationName>.appspot.com by default -->
+        <gae.application.version>test</gae.application.version>
     </properties>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-gae-plugin-repo</id>
+            <name>Maven Google App Engine Repository</name>
+            <url>http://maven-gae-plugin.googlecode.com/svn/repository/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.google.appengine</groupId>-->
+            <!--<artifactId>appengine-api-1.0-sdk</artifactId>-->
+            <!--<version>1.7.0</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.wixpress</groupId>
             <artifactId>googleadsense-core</artifactId>
@@ -61,18 +81,23 @@
             <artifactId>time_2.9.1</artifactId>
             <version>0.5</version>
         </dependency>
-        <!-- Test -->
-        <dependency>
-            <groupId>org.specs2</groupId>
-            <artifactId>specs2_${scala.version}</artifactId>
-            <version>1.12</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
     <build>
         <sourceDirectory>src/main/scala</sourceDirectory>
         <testSourceDirectory>src/test/scala</testSourceDirectory>
         <plugins>
+            <plugin>
+                <groupId>org.fusesource.scalate</groupId>
+                <artifactId>maven-scalate-plugin</artifactId>
+                <version>1.5.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>precompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
@@ -91,6 +116,24 @@
                         <arg>-target:jvm-1.5</arg>
                     </args>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.kindleit</groupId>
+                <artifactId>maven-gae-plugin</artifactId>
+                <version>0.9.4</version>
+                <configuration>
+                    <serverId>appengine.google.com</serverId>
+                    <sdkDir>${gae.home}</sdkDir>
+                    <appDir>${project.build.directory}/${project.build.finalName}</appDir>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.kindleit</groupId>
+                        <artifactId>gae-runtime</artifactId>
+                        <version>${gae.version}</version>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

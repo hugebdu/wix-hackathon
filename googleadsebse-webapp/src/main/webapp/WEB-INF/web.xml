@@ -20,11 +20,6 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>/static/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
         <servlet-name>SettingsServlet</servlet-name>
         <url-pattern>/settings/*</url-pattern>
     </servlet-mapping>

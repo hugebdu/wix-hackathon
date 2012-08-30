@@ -17,7 +17,7 @@ class AdUnitServlet extends ScalatraServlet with ScalateSupport {
   }
 
   get("/") {
-    ssp("/WEB-INF/views/adunit.ssp",
+    ssp("adunit.ssp",
       "contextRoot" -> request.getContextPath)
 
   }
