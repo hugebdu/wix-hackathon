@@ -5,7 +5,6 @@
     <title>Google adSense Settings</title>
     <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.css" media="all">
     <link rel="stylesheet" type="text/css" href="static/css/settings.css" media="all">
-    <link rel="stylesheet" type="text/css" href="static/farbtastic/farbtastic.css" media="all">
     <script type="text/javascript" src="static/js/prefixfree.js"></script>
 </head>
 <body>
@@ -113,29 +112,57 @@
 
                 <div id="design" class="collapse">
                     <form id="form-design">
-                        <div class="form-devider">
+                        <div class="form-divider ad-color-settings">
                             <strong>Colors</strong>
                             <ul class="unstyled">
-                                <li class="ad-color">
-                                    <input type="color" id="colorBorder"/>
+                                <li class="ad-color form-inline">
+                                    <label for="colorBorder">Border </label>
+                                    <input class="color {required:false}" id="colorBorder" value="ff0000">
                                 </li>
-                                <li class="ad-color">
-                                    <input type="color" id="colorBg"/>
+                                <li class="ad-color form-inline">
+                                    <label for="colorBg">Background </label>
+                                    <input class="color {required:false}" id="colorBg" value="ffff00">
                                 </li>
-                                <li class="ad-color">
-                                    <input type="color" id="colorLink"/>
+                                <li class="ad-color form-inline">
+                                    <label for="colorLink">Link </label>
+                                    <input class="color {required:false}" id="colorLink" value="00ff00">
                                 </li>
-                                <li class="ad-color">
-                                    <input type="color" id="colorText"/>
+                                <li class="ad-color form-inline">
+                                    <label for="colorText">Text </label>
+                                    <input class="color {required:false}" id="colorText" value="00ffff">
                                 </li>
-                                <li class="ad-color">
-                                    <input type="color" id="colorUrl"/>
+                                <li class="ad-color form-inline">
+                                    <label for="colorUrl">URL </label>
+                                    <input class="color {required:false}" id="colorUrl" value="ff00ff">
                                 </li>
                             </ul>
                         </div>
-                        <div id="colorpicker"></div>
-                        <div class="form-devider">
+                        <div class="form-divider ad-radius-settings">
+                            <strong>Corner Style</strong>
+                            <ul class="unstyled ad-radius-list">
+                                <li class="ad-radius">
 
+                                    <input type="radio" name="corner_style" id="corner-no" value="0"/>
+                                    <a href="#" class="btn btn-primary corner-no" rel="corner-no"></a>
+                                    <label for="corner-no">
+                                        <small>Square</small>
+                                    </label>
+                                </li>
+                                <li class="ad-radius">
+                                    <input type="radio" name="corner_style" id="corner-small" value="6"/>
+                                    <a href="#" class="btn btn-primary corner-small" rel="corner-small"></a>
+                                    <label for="corner-small">
+                                        <small>Slightly Rounded</small>
+                                    </label>
+                                </li>
+                                <li class="ad-radius">
+                                    <input type="radio" name="corner_style" id="corner-large" value="10"/>
+                                    <a href="#" class="btn btn-primary corner-large" rel="corner-large"></a>
+                                    <label for="corner-large">
+                                        <small>Very Rounded</small>
+                                    </label>
+                                </li>
+                            </ul>
                         </div>
                     </form>
                 </div>
@@ -149,9 +176,7 @@
 <script type="text/javascript" src="static/js/angular-1.0.1.js"></script>
 <script type="text/javascript" src="static/js/angular-resource-1.0.1.js"></script>
 <script type="text/javascript" src="static/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="static/farbtastic/farbtastic.js">
-
-</script>
+<script type="text/javascript" src="static/jscolor/jscolor.js"></script>
 <script type="text/javascript" src="static/js/settings.js"></script>
 </body>
 </html>

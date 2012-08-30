@@ -57,6 +57,26 @@ function SettingsCtrl($scope, $http, $resource){
 }
 
 /* Settings UI scripts */
+function handleRadiusButtons(){
+    var radios = $('ad-radius input');
+    var buttons = $('.ad-radius .btn');
+
+    buttons.click(function(event){
+        buttons.removeClass('selected');
+        radios.removeAttr('checked');
+        $(event.target).addClass('selected');
+        radios.find('#' + event.target.rel).attr('checked', 'checked');
+        console.log(radios.find('#' + event.target.rel));
+        event.preventDefault();
+    });
+}
+
+function initColorButtons(){
+    var colors = $('.color');
+    colors.each(function(){
+        $(this).css({'background-color': '#'+ $(this).val()});
+    })
+}
 
 $(document).ready(function() {
     $("#ad-type-text").attr('checked', 'checked');
@@ -71,4 +91,8 @@ $(document).ready(function() {
     $('.settings-ad-size').tooltip({
         selector: "a[rel=tooltip]"
     });
+
+    handleRadiusButtons();
+    initColorButtons();
+
 });
