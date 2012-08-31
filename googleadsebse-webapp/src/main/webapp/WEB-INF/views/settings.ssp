@@ -18,7 +18,7 @@
         var adTypeAngularJsHandler = function(type) {}
     </script>
 
-    <script type="text/javascript" src="//sslstatic.wix.com/services/js-sdk/1.8.0/js/Wix.js"></script>
+    <script type="text/javascript" src="${contextRoot}/static/wixapi/Wix.js"></script>
     <script type="text/javascript" src="${contextRoot}/static/js/jquery-1.8.0.js"></script>
     <script type="text/javascript" src="${contextRoot}/static/js/underscore.js"></script>
     <script type="text/javascript" src="${contextRoot}/static/js/angular-1.0.1.js"></script>
