@@ -41,7 +41,7 @@ function SettingsCtrl($scope, $http, $resource){
                 'Vertical':[
                     {name:'Wide Skyscraper', width:160, height:600},
                     {name:'Skyscraper', width:120, height:600},
-                    {name:'Vertical Banner', width:160, height:240}
+                    {name:'Vertical Banner', width:120, height:240}
                 ]
             }
         },
@@ -131,10 +131,11 @@ function handleRadiusButtons(){
         buttons.removeClass('selected');
         radios.removeAttr('checked');
         $(event.target).addClass('selected');
+
         var selected = _.find(radios, function(r) { return r.id == event.target.rel });
         selected.checked = true;
         window.$scope.uiFeaturesChanged(selected.value);
-        console.log(radios.find('#' + event.target.rel));
+        //console.log(radios.find('#' + event.target.rel));
         event.preventDefault();
     });
 }

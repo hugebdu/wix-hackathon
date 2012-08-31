@@ -2,6 +2,7 @@
 <%@ val contextRoot: String %>
 <%@ val settings: com.wixpress.googleadsense.domain.Settings %>
 <script type="text/javascript" src="//sslstatic.wix.com/services/js-sdk/1.8.0/js/Wix.js"></script>
+<script type="text/javascript" src="${contextRoot}/static/js/jquery-1.8.0.js"></script>
 <script type="text/javascript">
     <!--
     google_adtest = "on";
@@ -20,4 +21,34 @@
 </script>
 <script type="text/javascript"
         src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<script>
+    var resizeTimer = null;
+    function handleResize(width, height){
+            
+        if (!Wix){
+            console.log('Missing Wix.js');
+            return;
+        }
+
+        if (Wix.changeAppSize){
+            if($(window).width() != width && $(window).height() != height){
+                Wix.changeAppSize(width, height);
+            }
+        } else {
+            if($(window).height() != height){
+                Wix.reportHeightChange(height);
+            }
+        }
+    }
+    handleResize(${settings.width}, ${settings.height});
+    $(window).on('resize', function(event){
+
+        if (resizeTimer){
+            clearTimeout(resizeTimer);
+        }
+        resizeTimer = setTimeout(function(){
+            handleResize(${settings.width}, ${settings.height});
+        }, 200);
+    });
 </script>
