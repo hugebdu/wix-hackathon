@@ -10,7 +10,7 @@
     google_ad_height = ${settings.height};
     google_ad_format = "${settings.format}";
     google_ad_type = "${settings.adType}";
-
+    google_ui_features = "${settings.uiFeatures}";
     google_color_border = "${settings.colorBorder}";
     google_color_bg = "${settings.colorBg}";
     google_color_link = "${settings.colorLink}";

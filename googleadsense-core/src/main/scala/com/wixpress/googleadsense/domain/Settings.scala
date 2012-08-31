@@ -17,5 +17,6 @@ sealed case class Settings(widgetId: WidgetId,
                            colorBg: String = "FFFFFF",
                            colorLink: String = "FFFFFF",
                            colorText: String = "FFFFFF",
+                           uiFeatures: String = "rc:0",
                            colorUrl: String = "FFFFFF") extends JsonSerializable
 

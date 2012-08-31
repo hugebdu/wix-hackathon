@@ -6,7 +6,10 @@
 
 angular.module('settings', ['ngResource']);
 
+
 function SettingsCtrl($scope, $http, $resource){
+
+    window.$scope = $scope;
 
     $scope.availableTypes = window.availableTypes;
 
@@ -73,39 +76,64 @@ function SettingsCtrl($scope, $http, $resource){
         return $scope.settings.format == fmt ? 'selected' : '';
     };
 
-    $scope.adSizesFlattened = _.flatten(_.map($scope.adSizes, function(t) { return _.values(t.items) }));
-
-    _.forEach($scope.adSizesFlattened, function(item) {
-        item.format =  "" + item.width + "x" + item.height + "_as";
-    });
+    $scope.adSizesFlattened = _.flatten(_.map($scope.adSizes, function(t) {
+        var values = _.flatten(_.values(t.items));
+        _.forEach(values, function(item) {
+            item.format =  "" + item.width + "x" + item.height + (t.name == 'Link' ? "_0ads_al" : "as");
+        });
+        return values;
+    }));
 
     $scope.Settings = $resource(window.contentRoot + '/settings/:instanceId/:componentId', {componentId: '@widgetId.componentId', instanceId: '@widgetId.instanceId'});
 
     $scope.settings = $scope.Settings.get({ 'instanceId': window.widgetId.instanceId, 'componentId': window.widgetId.componentId});
 
-    $scope.save = function(){
+
+    _.forEach(["format", "adType", "colorBorder", "colorBg", "colorLink", "colorText", "colorUrl", "uiFeatures"], function(exp) {
+        $scope.$watch('settings.' + exp, function(newValue, oldValue) {
+            if (newValue != undefined) {
+                $scope.refresh();
+            }
+        });
+    });
+
+    $scope.refresh = function() {
         $scope.settings.$save();
-        Wix.closeSettings();
-    }
+        Wix.refreshAppByCompIds([window.widgetId.componentId]);
+    };
 
     $scope.picked = function(name) {
         var item = _.find($scope.adSizesFlattened, function(o) { return o.name == name});
         $scope.settings.width = item.width;
         $scope.settings.height = item.height;
         $scope.settings.format = item.format;
-    }
+    };
+
+    $scope.uiFeaturesChanged = function(val) {
+        $scope.$apply(function() {
+            $scope.settings.uiFeatures = val;
+        });
+    };
+
+    $scope.colorChanged = function(id, val) {
+        $scope.$apply(function() {
+            $scope.settings[id] = val;
+        });
+    };
 }
 
 /* Settings UI scripts */
 function handleRadiusButtons(){
-    var radios = $('ad-radius input');
+    var radios = $('.ad-radius input');
     var buttons = $('.ad-radius .btn');
 
     buttons.click(function(event){
         buttons.removeClass('selected');
         radios.removeAttr('checked');
         $(event.target).addClass('selected');
-        radios.find('#' + event.target.rel).attr('checked', 'checked');
+        var selected = _.find(radios, function(r) { return r.id == event.target.rel });
+        selected.checked = true;
+        window.$scope.uiFeaturesChanged(selected.value);
         console.log(radios.find('#' + event.target.rel));
         event.preventDefault();
     });
@@ -146,6 +174,9 @@ function initColorButtons(){
     var colors = $('.color');
     colors.each(function(){
         $(this).css({'background-color': '#'+ $(this).val()});
+        $(this).change(function(e) {
+            window.$scope.colorChanged($(this).attr("id"), $(this).val());
+        });
     })
 }
 
