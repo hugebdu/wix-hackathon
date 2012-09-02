@@ -40,12 +40,12 @@
             }
 
             if (Wix.changeAppSize){
-                if ($(window).width() != width && $(window).height() != height){
-                    Wix.changeAppSize(width, height);
+                if ($(window).width() != width + 5 && $(window).height() != height + 5){
+                    Wix.changeAppSize(width + 5, height + 5);
                 }
             } else {
-                if ($(window).height() != height){
-                    Wix.reportHeightChange(height);
+                if ($(window).height() != height + 5){
+                    Wix.reportHeightChange(height + 5);
                 }
             }
         }
@@ -57,7 +57,7 @@
             }
             resizeTimer = setTimeout(function(){
                 handleResize(${settings.width}, ${settings.height});
-            }, 200);
+            }, 150);
         });
     </script>
 </head>
