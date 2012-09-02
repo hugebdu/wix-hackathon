@@ -15,10 +15,15 @@ object WixSignedInstance {
     import net.liftweb.json.parse
 
     try {
-      val json: String = new String(Base64.decode(signed.split('.')(1))).dropRight(1)
-      parse(json).asInstanceOf[JObject].values("instanceId").asInstanceOf[String]
+      val json: String = new String(Base64.decode(signed.split('.')(1)))
+      val obj: JObject = parse(json).asInstanceOf[JObject]
+      val i: String = obj.values("instanceId").asInstanceOf[String]
+      i
     } catch {
-      case e: Exception => signed
+      case e: Exception => {
+        e.printStackTrace()
+        signed
+      }
     }
   }
 }

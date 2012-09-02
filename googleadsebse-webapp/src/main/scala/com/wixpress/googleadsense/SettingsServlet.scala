@@ -27,7 +27,13 @@ class SettingsServlet extends ScalatraServlet with ScalateSupport with LiftJsonR
     parsedBody match {
       case json: JObject => {
         val settings = json.extract[Settings]
-        settingsService.store(settings)
+        val fixed = Settings(
+          WidgetId(instanceId(settings.widgetId.instanceId), settings.widgetId.componentId),
+          settings.clientId,
+          settings.channel,
+          settings.width, settings.height, settings.format, settings.adType, settings.colorBorder, settings.colorBg, settings.colorLink, settings.colorText, settings.uiFeatures, settings.colorUrl
+        )
+        settingsService.store(fixed)
       }
       case _ => halt(400, "Unknown JSON")
     }
