@@ -4,6 +4,7 @@ import domain.WidgetId
 import org.scalatra.ScalatraServlet
 import org.scalatra.scalate.ScalateSupport
 import com.wixpress.googleadsense.Environment.application._
+import com.wixpress.googleadsense.domain.WixSignedInstance.instanceId
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,7 +18,7 @@ class AdUnitServlet extends ScalatraServlet with ScalateSupport {
   }
 
   get("/") {
-    val settings = settingsService.getSettings(WidgetId(params("instance"), params("compId")))
+    val settings = settingsService.getSettings(WidgetId(instanceId(params("instance")), params("compId")))
     ssp("adunit.ssp",
       "contextRoot" -> request.getContextPath,
       "settings" -> settings)

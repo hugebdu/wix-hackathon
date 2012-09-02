@@ -1,12 +1,13 @@
 package com.wixpress.googleadsense
 
-import domain.{WidgetId, Settings}
+import domain.{WixSignedInstance, WidgetId, Settings}
 import org.scalatra.ScalatraServlet
 import org.scalatra.scalate.ScalateSupport
 import com.wixpress.googleadsense.Environment.application._
 import net.liftweb.json._
 import net.liftweb.json.JsonDSL._
 import org.scalatra.liftjson.LiftJsonRequestBody
+import WixSignedInstance.instanceId
 
 /**
  * Created with IntelliJ IDEA.
@@ -38,12 +39,10 @@ class SettingsServlet extends ScalatraServlet with ScalateSupport with LiftJsonR
     ssp("settings.ssp",
       "contextRoot" -> request.getContextPath,
       "availableTypes" -> pretty(render(settingsService.availableTypes)),
-      "widgetId" -> WidgetId(params("instance"), params("origCompId")).toJson)
+      "widgetId" -> WidgetId(instanceId(params("instance")), params("origCompId")).toJson)
   }
 
   override protected def isScalateErrorPageEnabled = false
-
-
 }
 
 

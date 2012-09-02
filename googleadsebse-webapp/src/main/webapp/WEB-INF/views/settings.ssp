@@ -30,7 +30,7 @@
 <body>
 <div class="container" ng-controller="SettingsCtrl">
     <div class="row-fluid row-welcome">
-        <div class="span3 logo"><img src="" alt="Logo"/></div>
+        <div class="span3 logo"><img src="${contextRoot}/static/img/settings-logo.png" alt="Logo"/></div>
         <!--
         <div class="control-group">
             <button class="btn btn-primary" ng-click="save()">OK</button>
@@ -38,7 +38,7 @@
          -->
         <div class="span9 welcome-text">
             <p>
-                <span>You NEEED to connect your <a href="">Google adSense</a> account.</span>
+                <span>You need to connect your <a href="">Google adSense</a> account.</span>
                 <br/>
                 <small>Don't have a Google adSense account? <a href="">Create one</a></small>
             </p>

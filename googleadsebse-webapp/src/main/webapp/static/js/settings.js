@@ -98,8 +98,9 @@ function SettingsCtrl($scope, $http, $resource){
     });
 
     $scope.refresh = function() {
-        $scope.settings.$save();
-        Wix.refreshAppByCompIds([window.widgetId.componentId]);
+        $scope.settings.$save(function(u, putResponseHeaders) {
+            Wix.refreshAppByCompIds([window.widgetId.componentId]);
+        });
     };
 
     $scope.picked = function(name) {

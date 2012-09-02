@@ -37,7 +37,7 @@ trait GAESettingsDaoComponent extends SettingsDaoComponent {
 
     implicit def settingsToEntity(settings: Settings): Entity = {
       val e = new Entity(settings.widgetId)
-      e.setProperty("json", settings.toJson)
+      e.setProperty("json", new Text(settings.toJson))
       e
     }
 
@@ -46,7 +46,8 @@ trait GAESettingsDaoComponent extends SettingsDaoComponent {
     }
 
     implicit def entityToSettings(e: Entity): Settings = {
-      (JsonParser.parse(e("json")).asInstanceOf[JObject]).extract[Settings]
+      val text = e.getProperty("json").asInstanceOf[Text]
+      (JsonParser.parse(text.getValue).asInstanceOf[JObject]).extract[Settings]
     }
   }
 }
