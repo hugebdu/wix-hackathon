@@ -174,8 +174,9 @@ function handleAccordionMinSize(){
 function initColorButtons(){
     var colors = $('.color');
     colors.each(function(){
-        $(this).css({'background-color': '#'+ $(this).val()});
-        $(this).change(function(e) {
+        var color = '#'+ $(this).val();
+        $(this).css({'background-color': color, 'color': color});
+        $(this).change(function() {
             window.$scope.colorChanged($(this).attr("id"), $(this).val());
         });
     })

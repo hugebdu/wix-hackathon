@@ -109,23 +109,23 @@
                             <ul class="unstyled">
                                 <li class="ad-color form-inline">
                                     <label for="colorBorder">Border </label>
-                                    <input class="color {required:false}" id="colorBorder" ng-model="settings.colorBorder" value="ff0000">
+                                    <input class="color" id="colorBorder" ng-model="settings.colorBorder" value="ff0000">
                                 </li>
                                 <li class="ad-color form-inline">
                                     <label for="colorBg">Background </label>
-                                    <input class="color {required:false}" id="colorBg" ng-model="settings.colorBg" value="ffff00">
+                                    <input class="color" id="colorBg" ng-model="settings.colorBg" value="ffff00">
                                 </li>
                                 <li class="ad-color form-inline">
                                     <label for="colorLink">Link </label>
-                                    <input class="color {required:false}" id="colorLink" ng-model="settings.colorLink" value="00ff00">
+                                    <input class="color" id="colorLink" ng-model="settings.colorLink" value="00ff00">
                                 </li>
                                 <li class="ad-color form-inline">
                                     <label for="colorText">Text </label>
-                                    <input class="color {required:false}" id="colorText" ng-model="settings.colorText" value="00ffff">
+                                    <input class="color" id="colorText" ng-model="settings.colorText" value="00ffff">
                                 </li>
                                 <li class="ad-color form-inline">
                                     <label for="colorUrl">URL </label>
-                                    <input class="color {required:false}" id="colorUrl" ng-model="settings.colorUrl" value="ff00ff">
+                                    <input class="color" id="colorUrl" ng-model="settings.colorUrl" value="ff00ff">
                                 </li>
                             </ul>
                         </div>
