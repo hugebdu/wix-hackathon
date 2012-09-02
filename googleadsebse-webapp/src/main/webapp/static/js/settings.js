@@ -133,7 +133,7 @@ function handleRadiusButtons(){
         $(event.target).addClass('selected');
 
         var selected = _.find(radios, function(r) { return r.id == event.target.rel });
-        selected.checked = true;
+        $(selected).attr('checked', 'checked');
         window.$scope.uiFeaturesChanged(selected.value);
         //console.log(radios.find('#' + event.target.rel));
         event.preventDefault();
